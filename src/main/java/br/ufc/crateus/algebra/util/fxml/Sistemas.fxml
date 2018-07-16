@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="670.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufc.crateus.algebra.interfaces.SistemasController">
+   <children>
+      <ImageView fitHeight="670.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/bg.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="iBack" fitHeight="47.0" fitWidth="45.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/backIcon.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="379.0" layoutY="56.0" text="CALCULATOR" textFill="#f15756">
+         <font>
+            <Font name="Arial" size="9.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="iCalculator" fitHeight="45.0" fitWidth="39.0" layoutX="390.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/calculatorIcon.png" />
+         </image>
+      </ImageView>
+      <Pane fx:id="pMenu" layoutX="4.0" layoutY="69.0" prefHeight="597.0" prefWidth="450.0">
+         <children>
+            <ProgressIndicator fx:id="piStatus" focusTraversable="false" layoutX="98.0" layoutY="3.0" prefHeight="199.0" prefWidth="254.0" progress="0.0" />
+            <JFXButton fx:id="btnAulas" focusTraversable="false" layoutX="66.0" layoutY="274.0" prefHeight="71.0" prefWidth="315.0" style="-fx-background-color: #f15756;" text="AULAS " textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnExercicios" focusTraversable="false" layoutX="66.0" layoutY="355.0" prefHeight="71.0" prefWidth="315.0" style="-fx-background-color: #f15756;" text="EXERCICIOS" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+      <Pane fx:id="pAulas" layoutX="2.0" layoutY="83.0" prefHeight="583.0" prefWidth="450.0" visible="false">
+         <children>
+            <JFXButton focusTraversable="false" layoutX="61.0" layoutY="310.0" prefHeight="61.0" prefWidth="308.0" style="-fx-background-color: #f15756;" text="IR PARA AS VIDEO-AULAS" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="21.0" layoutY="114.0" prefHeight="134.0" prefWidth="412.0" text="Sistemas lineares é um conjunto de equações lineares, com m equações e n incógnitas. A solução de um sistema linear é solução de todas as equações lineares" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="pExercicios" layoutY="83.0" prefHeight="583.0" prefWidth="450.0" visible="false">
+         <children>
+            <Label layoutX="179.0" layoutY="99.0" text="exercicios" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

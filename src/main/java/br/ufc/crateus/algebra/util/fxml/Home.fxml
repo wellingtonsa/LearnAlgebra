@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="670.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufc.crateus.algebra.interfaces.HomeController">
+   <children>
+      <ImageView fitHeight="670.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Home.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnMatrizes" focusTraversable="false" layoutX="52.0" layoutY="243.0" prefHeight="92.0" prefWidth="340.0" style="-fx-background-color: #f15756;" text="ALGEBRA MATRICIAL" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="44.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/AMicon.png" />
+               </image></ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnDetermiantes" focusTraversable="false" layoutX="52.0" layoutY="340.0" prefHeight="92.0" prefWidth="340.0" style="-fx-background-color: #f15756;" text="DETERMINANTES" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="44.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Dicon.png" />
+               </image></ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnSistemas" focusTraversable="false" layoutX="53.0" layoutY="437.0" prefHeight="92.0" prefWidth="340.0" style="-fx-background-color: #f15756;" text="SISTEMAS" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="43.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Sicon.png" />
+               </image></ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnEvetoriais" focusTraversable="false" layoutX="53.0" layoutY="534.0" prefHeight="92.0" prefWidth="340.0" style="-fx-background-color: #f15756;" text="ESPAÇOES VETORIAS" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="46.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

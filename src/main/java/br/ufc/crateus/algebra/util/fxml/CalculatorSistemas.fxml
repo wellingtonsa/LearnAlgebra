@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="670.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufc.crateus.algebra.interfaces.CalculatorSistemasController">
+   <children>
+      <ImageView fitHeight="670.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/bg.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="iBack" fitHeight="47.0" fitWidth="45.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/backIcon.png" />
+         </image>
+      </ImageView>
+      <Pane fx:id="pC" layoutY="62.0" prefHeight="238.0" prefWidth="450.0">
+         <children>
+            <Label fx:id="lbNum1" alignment="CENTER" contentDisplay="CENTER" layoutX="105.0" layoutY="14.0" prefHeight="17.0" prefWidth="200.0" text="RESULTADO" textAlignment="JUSTIFY" textFill="#f15756">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Label>
+            <ScrollPane fx:id="spC" centerShape="false" focusTraversable="false" layoutX="88.0" layoutY="37.0" prefHeight="150.0" prefWidth="210.0" scaleShape="false">
+               <content>
+                  <GridPane fx:id="gpC" />
+               </content>
+            </ScrollPane>
+            <JFXTextField fx:id="tfX" alignment="CENTER" editable="false" focusColor="#f15756" layoutX="195.0" layoutY="201.0" prefHeight="23.0" prefWidth="159.0">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </JFXTextField>
+            <ScrollPane fx:id="spD" focusTraversable="false" layoutX="311.0" layoutY="37.0" prefHeight="150.0" prefWidth="45.0">
+               <content>
+                  <GridPane fx:id="gpD" />
+               </content>
+            </ScrollPane>
+            <Label fx:id="lbX" alignment="CENTER" contentDisplay="CENTER" layoutX="88.0" layoutY="204.0" prefHeight="17.0" prefWidth="99.0" text="SOLUÇÃO" textAlignment="JUSTIFY" textFill="#f15756">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="pAB" layoutX="-2.0" layoutY="57.0" prefHeight="256.0" prefWidth="450.0" visible="false">
+         <children>
+            <Label layoutX="140.0" layoutY="14.0" text="EQUAÇÕES" textFill="#f15756">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Label>
+            <ScrollPane fx:id="spA" centerShape="false" focusTraversable="false" layoutX="72.0" layoutY="36.0" prefHeight="150.0" prefWidth="210.0" scaleShape="false">
+               <content>
+                  <GridPane fx:id="gpA" />
+               </content>
+            </ScrollPane>
+            <Label layoutX="298.0" layoutY="15.0" text="TERMOS" textFill="#f15756">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Label>
+            <ScrollPane fx:id="spB" focusTraversable="false" layoutX="312.0" layoutY="36.0" prefHeight="150.0" prefWidth="45.0">
+               <content>
+                  <GridPane fx:id="gpB" />
+               </content>
+            </ScrollPane>
+            <JFXButton fx:id="btnMaLA" focusTraversable="false" layoutX="132.0" layoutY="213.0" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: #f15756;" text="+">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnMeLA" focusTraversable="false" layoutX="168.0" layoutY="213.0" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: #d1d1d1;" text="-">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnMaAA" focusTraversable="false" layoutX="229.0" layoutY="213.0" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: #f15756;" text="+">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnMeAA" focusTraversable="false" layoutX="265.0" layoutY="213.0" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: #d1d1d1;" text="-">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="233.0" layoutY="201.0" text="INCOGNITAS" textFill="#f15756">
+               <font>
+                  <Font name="Arial" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="139.0" layoutY="201.0" text="EQUAÇÕES" textFill="#f15756">
+               <font>
+                  <Font name="Arial" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <JFXRadioButton fx:id="rbGauss" focusTraversable="false" layoutX="114.0" layoutY="401.0" text="GAUSS">
+         <toggleGroup>
+            <ToggleGroup fx:id="rbOp" />
+         </toggleGroup>
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </JFXRadioButton>
+      <Label layoutX="179.0" layoutY="350.0" text="OPERAÇÕES" textFill="#f15756">
+         <font>
+            <Font name="Arial" size="11.0" />
+         </font>
+      </Label>
+      <JFXRadioButton fx:id="rbGaussJordan" focusTraversable="false" layoutX="54.0" layoutY="369.0" text="GAUSS-JORDAN" toggleGroup="$rbOp">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="rbFalu" focusTraversable="false" layoutX="226.0" layoutY="369.0" text="FATORAÇÃO LU" toggleGroup="$rbOp">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="rbEstudo" focusTraversable="false" layoutX="216.0" layoutY="401.0" text="ESTUDO" toggleGroup="$rbOp">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </JFXRadioButton>
+      <JFXButton fx:id="btnCalcular" focusTraversable="false" layoutX="56.0" layoutY="563.0" prefHeight="45.0" prefWidth="341.0" style="-fx-background-color: #f15756;" text="CALCULAR" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+      </JFXButton>
+      <Pane fx:id="pE" layoutY="57.0" prefHeight="256.0" prefWidth="450.0" visible="false">
+         <children>
+            <Label layoutX="81.0" layoutY="14.0" text="MATRIZ L" textFill="#f15756">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="306.0" layoutY="14.0" text="MATRIZ U" textFill="#f15756">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Label>
+            <ScrollPane fx:id="spA2" centerShape="false" focusTraversable="false" layoutX="8.0" layoutY="33.0" prefHeight="150.0" prefWidth="210.0" scaleShape="false">
+               <content>
+                  <GridPane fx:id="gpL" />
+               </content>
+            </ScrollPane>
+            <ScrollPane fx:id="spA1" centerShape="false" focusTraversable="false" layoutX="233.0" layoutY="33.0" prefHeight="150.0" prefWidth="210.0" scaleShape="false">
+               <content>
+                  <GridPane fx:id="gpU" />
+               </content>
+            </ScrollPane>
+            <JFXTextField fx:id="tfFY" editable="false" focusColor="#f15756" layoutX="58.0" layoutY="217.0" />
+            <JFXTextField fx:id="tfFX" editable="false" focusColor="#f15756" layoutX="271.0" layoutY="217.0" />
+            <Label layoutX="93.0" layoutY="192.0" text="SOLUÇÃO Y" textFill="#f15756">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="290.0" layoutY="192.0" text="SOLUÇÃO X" textFill="#f15756">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

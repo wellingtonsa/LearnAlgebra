@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="670.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufc.crateus.algebra.interfaces.SplashController">
+   <children>
+      <ImageView fitHeight="670.0" fitWidth="450.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/SplashScreen.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnIniciar" focusTraversable="false" layoutX="71.0" layoutY="530.0" prefHeight="54.0" prefWidth="309.0" style="-fx-background-color: #f15756;" text="INICIAR" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="17.0" />
+         </font>
+      </JFXButton>
+      <Label fx:id="lbSair" layoutX="213.0" layoutY="598.0" prefHeight="17.0" prefWidth="37.0" text="SAIR" textAlignment="CENTER" textFill="#f15756">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
