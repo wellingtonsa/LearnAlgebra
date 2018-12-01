@@ -87,6 +87,10 @@ public class CalculatorController extends Application implements Initializable {
 	@FXML
 	private JFXRadioButton rbTrans;
 	@FXML
+	private JFXRadioButton rbCofat;
+	@FXML
+	private JFXRadioButton rbAdj;
+	@FXML
 	private JFXButton btnCalcular;
 	@FXML
 	private JFXTextField tfNum;
@@ -280,13 +284,13 @@ public class CalculatorController extends Application implements Initializable {
 					double[][] mB = new double[linhaB][colunaB];
 					mA = montarMatriz(linhaA, colunaA, gpA);
 					mB = montarMatriz(linhaB, colunaB, gpB);
-					if (mA.length == mB[0].length) {
+					if (mA[0].length == mB.length) {
 						pAB.setVisible(false);
 						pC.setVisible(true);
 						exibirMatriz(opmatr.multiplicacao(mA, mB), gpC);
 					} else {
 						JOptionPane.showMessageDialog(null,
-								"O número de linhas da matriz A não é igual o número de colunas de B. \n Verifique os valores da matriz e tente novamente!");
+								"O número de colunas da matriz A não é igual o número de linhas de B. \n Verifique os valores da matriz e tente novamente!");
 					}
 
 				} else if (rbMultE.isSelected()) {
@@ -329,6 +333,22 @@ public class CalculatorController extends Application implements Initializable {
 					pAB.setVisible(false);
 					pC.setVisible(true);
 					exibirMatriz(opmatr.transposta(mA), gpC);
+					
+				} else if (rbCofat.isSelected()) {
+					double[][] mA = new double[linhaA][colunaA];
+					mA = montarMatriz(linhaA, colunaA, gpA);
+						pAB.setVisible(false);
+						pC.setVisible(true);
+						exibirMatriz(opmatr.matrizCofatora(mA), gpC);
+					 
+				}
+				
+				else if (rbAdj.isSelected()) {
+					double[][] mA = new double[linhaA][colunaA];
+					mA = montarMatriz(linhaA, colunaA, gpA);
+						pAB.setVisible(false);
+						pC.setVisible(true);
+						exibirMatriz(opmatr.matrizAdjunta(mA), gpC);
 				}
 
 			}
@@ -445,6 +465,7 @@ public class CalculatorController extends Application implements Initializable {
 
 			}
 		});
+		
 
 		rbTrans.setOnMousePressed(new EventHandler<Event>() {
 
@@ -461,8 +482,42 @@ public class CalculatorController extends Application implements Initializable {
 
 			}
 		});
+		
+		rbCofat.setOnMousePressed(new EventHandler<Event>() {
+
+
+			public void handle(Event arg0) {
+				lbNum.setText("");
+				pB.setVisible(false);
+				pEsc.setVisible(false);
+				tfNum.setEditable(true);
+				pAB.setVisible(true);
+				pC.setVisible(false);
+				tfNum.setText("");
+				zerarAllMatriz();
+
+			}
+		});
+		
+		rbAdj.setOnMousePressed(new EventHandler<Event>() {
+
+
+			public void handle(Event arg0) {
+				lbNum.setText("");
+				pB.setVisible(false);
+				pEsc.setVisible(false);
+				tfNum.setEditable(true);
+				pAB.setVisible(true);
+				pC.setVisible(false);
+				tfNum.setText("");
+				zerarAllMatriz();
+
+			}
+		});
 
 	}
+	
+	
 
 	public void GerarMatrizA() {
 		gpA.getChildren().clear();
@@ -471,7 +526,7 @@ public class CalculatorController extends Application implements Initializable {
 				cell = new TextField();
 				cell.setPrefWidth(30);
 				cell.setPrefHeight(30);
-				gpA.add(cell, i, j);
+				gpA.add(cell, j, i);
 			}
 
 		}
@@ -485,7 +540,7 @@ public class CalculatorController extends Application implements Initializable {
 				cell = new TextField();
 				cell.setPrefWidth(30);
 				cell.setPrefHeight(30);
-				gpB.add(cell, i, j);
+				gpB.add(cell, j, i);
 			}
 
 		}
@@ -505,6 +560,8 @@ public class CalculatorController extends Application implements Initializable {
 		rbIn.setSelectedColor(Color.rgb(241, 87, 86));
 		rbPot.setSelectedColor(Color.rgb(241, 87, 86));
 		rbTrans.setSelectedColor(Color.rgb(241, 87, 86));
+		rbCofat.setSelectedColor(Color.rgb(241, 87, 86));
+		rbAdj.setSelectedColor(Color.rgb(241, 87, 86));
 
 	}
 
@@ -512,8 +569,9 @@ public class CalculatorController extends Application implements Initializable {
 
 		double[][] matriz = new double[linha][coluna];
 
-		for (int j = 0; j < coluna; j++) {
-			for (int i = 0; i < linha; i++) {
+		
+		for (int i = 0; i < linha; i++) {
+			for (int j = 0; j < coluna; j++) {
 				if (!((TextField) gp.getChildren().get(i * coluna + j)).getText().isEmpty())
 					matriz[i][j] = Double.parseDouble(((TextField) gp.getChildren().get(i * coluna + j)).getText());
 			}
@@ -530,7 +588,7 @@ public class CalculatorController extends Application implements Initializable {
 				cell.setPrefWidth(30);
 				cell.setPrefHeight(30);
 				cell.setText(String.valueOf(formato.format(matriz[i][j])));
-				gp.add(cell, i, j);
+				gp.add(cell, j, i);
 			}
 
 		}

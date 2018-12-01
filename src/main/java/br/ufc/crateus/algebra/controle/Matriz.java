@@ -83,6 +83,10 @@ public class Matriz {
 
 	public double determinante(int i, double[][] mtr) {
 
+		if (mtr.length == 1) {
+			return mtr[0][0];
+		}
+
 		if (mtr.length == 2) {
 			double deter = mtr[0][0] * mtr[1][1] - mtr[0][1] * mtr[1][0];
 
@@ -93,7 +97,7 @@ public class Matriz {
 			double deter = 0;
 
 			for (int j = 0; j < mtr.length; j++) {
-				double[][] temp = this.SubMatriz(i, j, mtr);
+				double[][] temp = this.subMatriz(i, j, mtr);
 
 				deter = deter + Math.pow(-1, i + j) * mtr[i][j] * this.determinante(0, temp);
 
@@ -104,7 +108,7 @@ public class Matriz {
 
 	}
 
-	private double[][] SubMatriz(int i, int j, double[][] matriz) {
+	private double[][] subMatriz(int i, int j, double[][] matriz) {
 
 		double[][] temp = new double[matriz.length - 1][matriz.length - 1];
 
@@ -132,21 +136,22 @@ public class Matriz {
 
 	}
 
-	public double[][] matrizAdjunta(double[][] mtr) {
+	public double[][] matrizCofatora(double[][] mtr) {
+		double[][] tempCofatora = new double[mtr.length][mtr.length];
 
-		double[][] tempAdjunta = new double[mtr.length][mtr.length];
+		for (int i = 0; i < tempCofatora.length; i++) {
+			for (int j = 0; j < tempCofatora.length; j++) {
+				double[][] temp = subMatriz(i, j, mtr);
 
-		for (int i = 0; i < tempAdjunta.length; i++) {
-			for (int j = 0; j < tempAdjunta.length; j++) {
-				double[][] temp = this.SubMatriz(i, j, mtr);
-				double elementoAdjunto = Math.pow(-1, i + j) * this.determinante(0, temp);
-
-				tempAdjunta[i][j] = elementoAdjunto;
+				double elementoCofator = Math.pow(-1, i + j) * this.determinante(0, temp);
+				tempCofatora[i][j] = elementoCofator;
 			}
-
 		}
-		return tempAdjunta;
+		return tempCofatora;
+	}
 
+	public double[][] matrizAdjunta(double[][] mtr) {
+		return transposta(matrizCofatora(mtr));
 	}
 
 	public double[][] transposta(double[][] mtr) {
@@ -188,13 +193,23 @@ public class Matriz {
 		}
 	}
 
-	public void auxExibir(double[][] mtr) {
+	public static String auxExibir(double[][] mtr) {
+		String escalonamento = "";
+
 		for (int i = 0; i < mtr.length; i++) {
 			for (int j = 0; j < mtr[0].length; j++) {
-				System.out.print(mtr[i][j]);
+				escalonamento += "| " + mtr[i][j];
+				System.out.print("| " + mtr[i][j] + " ");
 
 			}
-			System.out.println();
+			escalonamento += "|\n";
+			System.out.println("|");
 		}
+		escalonamento += "\n\n";
+		System.out.println();
+		System.out.println();
+
+		return escalonamento;
 	}
+
 }

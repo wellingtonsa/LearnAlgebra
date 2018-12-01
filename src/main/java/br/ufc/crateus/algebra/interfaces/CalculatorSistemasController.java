@@ -20,6 +20,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -44,6 +45,10 @@ public class CalculatorSistemasController extends Application implements Initial
 	private Pane pC;
 	@FXML
 	private Pane pE;
+	@FXML
+	private ScrollPane spA1;
+	@FXML
+	private ScrollPane spA2;
 	@FXML
 	private GridPane gpA;
 	@FXML
@@ -75,6 +80,8 @@ public class CalculatorSistemasController extends Application implements Initial
 	@FXML
 	private JFXRadioButton rbFalu;
 	@FXML
+	private JFXRadioButton rbPosto;
+	@FXML
 	private JFXButton btnCalcular;
 	@FXML
 	private JFXTextField tfX;
@@ -84,6 +91,12 @@ public class CalculatorSistemasController extends Application implements Initial
 	private JFXTextField tfFY;
 	@FXML
 	private Label lbX;
+	@FXML
+	private Label lbY;
+	@FXML
+	private Label lbL;
+	@FXML
+	private Label lbU;
 
 	private TextField cell;
 
@@ -108,34 +121,30 @@ public class CalculatorSistemasController extends Application implements Initial
 
 	}
 
-
 	public void initialize(URL location, ResourceBundle resources) {
 		Settings();
-		
-		iBack.setOnMousePressed(new EventHandler<Event>() {
 
+		iBack.setOnMousePressed(new EventHandler<Event>() {
 
 			public void handle(Event arg0) {
 				myStage.close();
 			}
 		});
-		
+
 		btnMaAA.setOnAction(new EventHandler<ActionEvent>() {
 
-
 			public void handle(ActionEvent arg0) {
-				if (colunaA == 0 && colunaB ==0) {
+				if (colunaA == 0 && colunaB == 0) {
 					colunaA = 1;
 					colunaB = linhaB = 1;
 				}
-					linhaA++;
-					GerarSistema();
-					GerarTermos();
-				}
+				linhaA++;
+				GerarSistema();
+				GerarTermos();
+			}
 		});
 
 		btnMeAA.setOnAction(new EventHandler<ActionEvent>() {
-
 
 			public void handle(ActionEvent event) {
 				if (linhaA > 0)
@@ -145,7 +154,6 @@ public class CalculatorSistemasController extends Application implements Initial
 		});
 
 		btnMaLA.setOnAction(new EventHandler<ActionEvent>() {
-
 
 			public void handle(ActionEvent event) {
 				if (linhaA == 0) {
@@ -161,7 +169,6 @@ public class CalculatorSistemasController extends Application implements Initial
 
 		btnMeLA.setOnAction(new EventHandler<ActionEvent>() {
 
-
 			public void handle(ActionEvent event) {
 				if (colunaA > 0 && colunaB > 0) {
 					colunaA--;
@@ -175,7 +182,6 @@ public class CalculatorSistemasController extends Application implements Initial
 
 		rbGauss.setOnMousePressed(new EventHandler<Event>() {
 
-
 			public void handle(Event arg0) {
 				pAB.setVisible(true);
 				pC.setVisible(false);
@@ -186,7 +192,6 @@ public class CalculatorSistemasController extends Application implements Initial
 		});
 
 		rbGaussJordan.setOnMousePressed(new EventHandler<Event>() {
-
 
 			public void handle(Event arg0) {
 				pAB.setVisible(true);
@@ -208,8 +213,18 @@ public class CalculatorSistemasController extends Application implements Initial
 			}
 		});
 
-		rbEstudo.setOnMousePressed(new EventHandler<Event>() {
+		rbPosto.setOnMousePressed(new EventHandler<Event>() {
 
+			public void handle(Event arg0) {
+				pAB.setVisible(true);
+				pC.setVisible(false);
+				pE.setVisible(false);
+				tfX.setText("");
+				zerarAllMatriz();
+			}
+		});
+
+		rbEstudo.setOnMousePressed(new EventHandler<Event>() {
 
 			public void handle(Event arg0) {
 				pAB.setVisible(true);
@@ -222,60 +237,87 @@ public class CalculatorSistemasController extends Application implements Initial
 
 		btnCalcular.setOnAction(new EventHandler<ActionEvent>() {
 
-
 			public void handle(ActionEvent event) {
 				if (rbGauss.isSelected()) {
 					double[][] matr = montarSistema(linhaA, colunaA, gpA);
-					if(matr[0].length == matr.length) {
-					opSis.gauss(matr, montarVetor(linhaB, colunaB, gpB));
-					pAB.setVisible(false);
-					pC.setVisible(true);
-					tfX.setVisible(true);
-					lbX.setVisible(true);
-					exibirSistema(g.getMatr(), gpC);
-					exibirVetor(g.getB(), gpD);
-					exibirSolucao(g.getX(), tfX);
-					}else {
+					if (matr[0].length == matr.length) {
+						opSis.gauss(matr, montarVetor(linhaB, colunaB, gpB));
+						pAB.setVisible(false);
+						pC.setVisible(true);
+						tfX.setVisible(true);
+						lbX.setVisible(true);
+						exibirSistema(g.getMatr(), gpC);
+						exibirVetor(g.getB(), gpD);
+						exibirSolucao(g.getX(), tfX);
+					} else {
 						JOptionPane.showMessageDialog(null,
 								"A matriz não é NxN. \n Verifique os valores da matriz e tente novamente!");
 					}
-					
-				}else if(rbGaussJordan.isSelected()) {
+
+				} else if (rbGaussJordan.isSelected()) {
 					double[][] matr = montarSistema(linhaA, colunaA, gpA);
-					if(matr[0].length == matr.length) {
-					opSis.gaussJordan(matr, montarVetor(linhaB, colunaB, gpB));
-					pAB.setVisible(false);
-					pC.setVisible(true);
-					tfX.setVisible(false);
-					lbX.setVisible(false);
-					exibirSistema(g.getMatr(), gpC);
-					exibirVetor(g.getB(), gpD);	
-					}else {
-							JOptionPane.showMessageDialog(null,
-									"A matriz não é NxN. \n Verifique os valores da matriz e tente novamente!");
-						}
+					if (matr[0].length == matr.length) {
+						opSis.gaussJordan(matr, montarVetor(linhaB, colunaB, gpB));
+						pAB.setVisible(false);
+						pC.setVisible(true);
+						tfX.setVisible(false);
+						lbX.setVisible(false);
+						exibirSistema(g.getMatr(), gpC);
+						exibirVetor(g.getB(), gpD);
+					} else {
+						JOptionPane.showMessageDialog(null,
+								"A matriz não é NxN. \n Verifique os valores da matriz e tente novamente!");
+					}
 				}
-				
-				
+
 				else if (rbEstudo.isSelected()) {
 					double[][] matr = montarSistema(linhaA, colunaA, gpA);
-					JOptionPane.showMessageDialog(null, opSis.estudoSistema(matr,
-							montarVetor(linhaB, colunaB, gpB)));
-					
+					if (matr[0].length == matr.length) {
+						JOptionPane.showMessageDialog(null,
+								opSis.estudoSistema(matr, montarVetor(linhaB, colunaB, gpB))[0]);
+					} else {
+						JOptionPane.showMessageDialog(null,
+								"A matriz não é NxN. \n Verifique os valores da matriz e tente novamente!");
+					}
+
 				} else if (rbFalu.isSelected()) {
 					double[][] matr = montarSistema(linhaA, colunaA, gpA);
-					if(matr[0].length == matr.length) {
-					opSis.fatoracaoLU(matr, montarVetor(linhaB, colunaB, gpB));
-					pAB.setVisible(false);
-					pE.setVisible(true);
-					exibirSistema(falu.getL(), gpL);
-					exibirSistema(falu.getU(), gpU);
-					exibirSolucao(falu.getX(), tfFX);
-					exibirSolucao(falu.getY(), tfFY);
-				}else {
-					JOptionPane.showMessageDialog(null,
-							"A matriz não é NxN. \n Verifique os valores da matriz e tente novamente!");
-				}
+					if (matr[0].length == matr.length) {
+						opSis.fatoracaoLU(matr, montarVetor(linhaB, colunaB, gpB));
+						pAB.setVisible(false);
+						pE.setVisible(true);
+						lbX.setVisible(true);
+						spA1.setVisible(true);
+						spA2.setVisible(true);
+						lbL.setVisible(true);
+						lbU.setVisible(true);
+						exibirSistema(falu.getL(), gpL);
+						exibirSistema(falu.getU(), gpU);
+						exibirSolucao(falu.getX(), tfFX);
+						exibirSolucao(falu.getY(), tfFY);
+					} else {
+						JOptionPane.showMessageDialog(null,
+								"A matriz não é NxN. \n Verifique os valores da matriz e tente novamente!");
+					}
+				} else if (rbPosto.isSelected()) {
+					double[][] matr = montarSistema(linhaA, colunaA, gpA);
+					if (matr[0].length == matr.length) {
+						String[] postos = opSis.estudoSistema(matr, montarVetor(linhaB, colunaB, gpB));
+						pAB.setVisible(false);
+						pE.setVisible(true);
+						lbX.setVisible(true);
+						spA1.setVisible(false);
+						spA2.setVisible(false);
+						lbL.setVisible(false);
+						lbU.setVisible(false);
+						lbY.setText("MATRIZ DOS COEFICIENTE");
+						lbX.setText("MATRIZ AMPLIADA");
+						exibirPosto(postos[1], tfFX);
+						exibirPosto(postos[2], tfFY);
+					} else {
+						JOptionPane.showMessageDialog(null,
+								"A matriz não é NxN. \n Verifique os valores da matriz e tente novamente!");
+					}
 				}
 
 			}
@@ -290,7 +332,7 @@ public class CalculatorSistemasController extends Application implements Initial
 		for (int j = 0; j < coluna; j++) {
 			for (int i = 0; i < linha; i++) {
 				if (!((TextField) gp.getChildren().get(j * linha + i)).getText().isEmpty())
-					sistema[i][j] = Double.parseDouble(((TextField) gp.getChildren().get(j * linha + i)).getText());
+					sistema[i][j] = Double.parseDouble(((TextField) gp.getChildren().get(i * coluna + j)).getText());
 			}
 		}
 
@@ -317,7 +359,7 @@ public class CalculatorSistemasController extends Application implements Initial
 				cell.setPrefWidth(30);
 				cell.setPrefHeight(30);
 				cell.setText(String.valueOf(formato.format(sistema[i][j])));
-				gp.add(cell, i, j);
+				gp.add(cell, j, i);
 			}
 
 		}
@@ -346,6 +388,11 @@ public class CalculatorSistemasController extends Application implements Initial
 
 		tfS.setText(s);
 		s = "";
+	}
+
+	public void exibirPosto(String p, TextField tfS) {
+		tfS.setText("");
+		tfS.setText(p);
 	}
 
 	public void GerarSistema() {
@@ -385,6 +432,7 @@ public class CalculatorSistemasController extends Application implements Initial
 		rbGaussJordan.setSelectedColor(Color.rgb(241, 87, 86));
 		rbEstudo.setSelectedColor(Color.rgb(241, 87, 86));
 		rbFalu.setSelectedColor(Color.rgb(241, 87, 86));
+		rbPosto.setSelectedColor(Color.rgb(241, 87, 86));
 
 	}
 

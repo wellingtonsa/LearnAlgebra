@@ -1,6 +1,8 @@
 package br.ufc.crateus.algebra.controle;
 
-import java.text.DecimalFormat;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 
 public class GramSchmidt {
 
@@ -13,28 +15,51 @@ public class GramSchmidt {
 		return soma;
 	}
 
-	public void gramSchmidt(double[][] v) {
-		DecimalFormat formato = new DecimalFormat("#.#########");
+	public double[][] ortogonalizar(double[][] v) {
+
 		int n = v.length;
 		double[][] w = new double[n][n];
-		double[][] aux = new double[n][n];
-
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
-				w[i][j] = 0;
-			}
-		}
 
 		for (int i = 0; i < n; i++) {
 			w[0][i] = v[0][i];
 		}
+		for (int i = 1; i < n; i++) {
+			for (int j = 0; j < i; j++) {
+				for (int k = 0; k < n; k++) {
+					w[i][k] += (produtoInternoUsual(v[i], w[j]) / produtoInternoUsual(w[j], w[j])) * w[j][k];
+
+					if (j == i - 1) {
+						w[i][k] = v[i][k] - w[i][k];
+					}
+
+				}
+
+			}
+		}
+		return w;
+	}
+
+	public double[][] ortonormalizar(double[][] v) {
+
+		int n = v.length;
+		double[] w = new double[n];
+		double[][] x = new double[n][n];
+		BigDecimal bd;
+
+		for (int i = 0; i < n; i++) {
+
+			bd = new BigDecimal(produtoInternoUsual(v[i], v[i])).setScale(4, RoundingMode.HALF_EVEN);
+
+			w[i] = Math.sqrt(bd.doubleValue());
+
+		}
 
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
-				System.out.print(" " + formato.format(w[i][j]));
+				if (w[i] != 0)
+					x[i][j] = v[i][j] / w[i];
 			}
-			System.out.println();
 		}
-
+		return x;
 	}
 }

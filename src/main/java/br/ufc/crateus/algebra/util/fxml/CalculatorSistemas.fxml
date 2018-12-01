@@ -20,7 +20,7 @@
             <Image url="@../images/backIcon.png" />
          </image>
       </ImageView>
-      <Pane fx:id="pC" layoutY="62.0" prefHeight="238.0" prefWidth="450.0">
+      <Pane fx:id="pC" layoutY="62.0" prefHeight="238.0" prefWidth="450.0" visible="false">
          <children>
             <Label fx:id="lbNum1" alignment="CENTER" contentDisplay="CENTER" layoutX="105.0" layoutY="14.0" prefHeight="17.0" prefWidth="200.0" text="RESULTADO" textAlignment="JUSTIFY" textFill="#f15756">
                <font>
@@ -32,7 +32,7 @@
                   <GridPane fx:id="gpC" />
                </content>
             </ScrollPane>
-            <JFXTextField fx:id="tfX" alignment="CENTER" editable="false" focusColor="#f15756" layoutX="195.0" layoutY="201.0" prefHeight="23.0" prefWidth="159.0">
+            <JFXTextField fx:id="tfX" alignment="CENTER" editable="false" focusColor="#f15756" layoutX="195.0" layoutY="201.0" prefHeight="23.0" prefWidth="159.0" visible="false">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
@@ -42,14 +42,14 @@
                   <GridPane fx:id="gpD" />
                </content>
             </ScrollPane>
-            <Label fx:id="lbX" alignment="CENTER" contentDisplay="CENTER" layoutX="88.0" layoutY="204.0" prefHeight="17.0" prefWidth="99.0" text="SOLUÇÃO" textAlignment="JUSTIFY" textFill="#f15756">
+            <Label fx:id="lbX" alignment="CENTER" contentDisplay="CENTER" layoutX="88.0" layoutY="204.0" prefHeight="17.0" prefWidth="99.0" text="SOLUÇÃO" textAlignment="CENTER" textFill="#f15756" visible="false">
                <font>
                   <Font name="Arial" size="15.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="pAB" layoutX="-2.0" layoutY="57.0" prefHeight="256.0" prefWidth="450.0" visible="false">
+      <Pane fx:id="pAB" layoutX="-2.0" layoutY="57.0" prefHeight="256.0" prefWidth="450.0">
          <children>
             <Label layoutX="140.0" layoutY="14.0" text="EQUAÇÕES" textFill="#f15756">
                <font>
@@ -91,19 +91,19 @@
                   <Font name="Arial" size="14.0" />
                </font>
             </JFXButton>
-            <Label layoutX="233.0" layoutY="201.0" text="INCOGNITAS" textFill="#f15756">
+            <Label layoutX="233.0" layoutY="201.0" text="EQUAÇÕES" textFill="#f15756">
                <font>
                   <Font name="Arial" size="10.0" />
                </font>
             </Label>
-            <Label layoutX="139.0" layoutY="201.0" text="EQUAÇÕES" textFill="#f15756">
+            <Label layoutX="139.0" layoutY="201.0" text="INCOGNITAS" textFill="#f15756">
                <font>
                   <Font name="Arial" size="10.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <JFXRadioButton fx:id="rbGauss" focusTraversable="false" layoutX="114.0" layoutY="401.0" text="GAUSS">
+      <JFXRadioButton fx:id="rbGauss" focusTraversable="false" layoutX="54.0" layoutY="401.0" text="GAUSS">
          <toggleGroup>
             <ToggleGroup fx:id="rbOp" />
          </toggleGroup>
@@ -126,7 +126,7 @@
             <Font name="Arial" size="14.0" />
          </font>
       </JFXRadioButton>
-      <JFXRadioButton fx:id="rbEstudo" focusTraversable="false" layoutX="216.0" layoutY="401.0" text="ESTUDO" toggleGroup="$rbOp">
+      <JFXRadioButton fx:id="rbEstudo" focusTraversable="false" layoutX="54.0" layoutY="432.0" text="ESTUDO" toggleGroup="$rbOp">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
@@ -138,12 +138,12 @@
       </JFXButton>
       <Pane fx:id="pE" layoutY="57.0" prefHeight="256.0" prefWidth="450.0" visible="false">
          <children>
-            <Label layoutX="81.0" layoutY="14.0" text="MATRIZ L" textFill="#f15756">
+            <Label fx:id="lbL" layoutX="81.0" layoutY="14.0" text="MATRIZ L" textFill="#f15756">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="306.0" layoutY="14.0" text="MATRIZ U" textFill="#f15756">
+            <Label fx:id="lbU" layoutX="306.0" layoutY="14.0" text="MATRIZ U" textFill="#f15756">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
@@ -160,17 +160,22 @@
             </ScrollPane>
             <JFXTextField fx:id="tfFY" editable="false" focusColor="#f15756" layoutX="58.0" layoutY="217.0" />
             <JFXTextField fx:id="tfFX" editable="false" focusColor="#f15756" layoutX="271.0" layoutY="217.0" />
-            <Label layoutX="93.0" layoutY="192.0" text="SOLUÇÃO Y" textFill="#f15756">
+            <Label fx:id="lbY" layoutX="93.0" layoutY="192.0" text="SOLUÇÃO Y" textAlignment="CENTER" textFill="#f15756">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="290.0" layoutY="192.0" text="SOLUÇÃO X" textFill="#f15756">
+            <Label fx:id="lbX" layoutX="290.0" layoutY="192.0" text="SOLUÇÃO X" textAlignment="CENTER" textFill="#f15756">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
             </Label>
          </children>
       </Pane>
+      <JFXRadioButton fx:id="rbPosto" focusTraversable="false" layoutX="227.0" layoutY="401.0" text="POSTO" toggleGroup="$rbOp">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </JFXRadioButton>
    </children>
 </AnchorPane>

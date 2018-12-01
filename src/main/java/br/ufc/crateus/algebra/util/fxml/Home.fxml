@@ -47,12 +47,14 @@
                </image></ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnEvetoriais" focusTraversable="false" layoutX="53.0" layoutY="534.0" prefHeight="92.0" prefWidth="340.0" style="-fx-background-color: #f15756;" text="ESPAÇOES VETORIAS" textFill="WHITE">
+      <JFXButton fx:id="btnEvetoriais" focusTraversable="false" layoutX="53.0" layoutY="534.0" prefHeight="92.0" prefWidth="340.0" style="-fx-background-color: #f15756;" text="ESPAÇOS VETORIAS" textFill="WHITE">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="46.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="46.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" ><image>
+                  <Image url="@../images/Eicon.png" />
+               </image></ImageView>
          </graphic>
       </JFXButton>
    </children>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="670.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufc.crateus.algebra.interfaces.CalculatorVetoresController">
+   <children>
+      <ImageView fitHeight="670.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/bg.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="iBack" fitHeight="47.0" fitWidth="45.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/backIcon.png" />
+         </image>
+      </ImageView>
+      <Pane fx:id="pAB" layoutX="-2.0" layoutY="57.0" prefHeight="256.0" prefWidth="450.0">
+         <children>
+            <Label fx:id="lbV" layoutX="148.0" layoutY="14.0" text="VETORES DA BASE B" textFill="#f15756">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Label>
+            <ScrollPane fx:id="spA" centerShape="false" focusTraversable="false" layoutX="115.0" layoutY="36.0" prefHeight="150.0" prefWidth="210.0" scaleShape="false">
+               <content>
+                  <GridPane fx:id="gpA" />
+               </content>
+            </ScrollPane>
+            <JFXButton fx:id="btnMaLA" focusTraversable="false" layoutX="132.0" layoutY="213.0" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: #f15756;" text="+">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnMeLA" focusTraversable="false" layoutX="168.0" layoutY="213.0" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: #d1d1d1;" text="-">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnMaAA" focusTraversable="false" layoutX="229.0" layoutY="213.0" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: #f15756;" text="+">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnMeAA" focusTraversable="false" layoutX="265.0" layoutY="213.0" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: #d1d1d1;" text="-">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="236.0" layoutY="201.0" text="DIMENSAO" textFill="#f15756">
+               <font>
+                  <Font name="Arial" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="142.0" layoutY="201.0" text="VETORES" textFill="#f15756">
+               <font>
+                  <Font name="Arial" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <JFXRadioButton fx:id="rbOrton" focusTraversable="false" layoutX="225.0" layoutY="369.0" text="ORTONOMALIZAÇÃO">
+         <toggleGroup>
+            <ToggleGroup fx:id="rbOp" />
+         </toggleGroup>
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </JFXRadioButton>
+      <Label layoutX="179.0" layoutY="350.0" text="OPERAÇÕES" textFill="#f15756">
+         <font>
+            <Font name="Arial" size="11.0" />
+         </font>
+      </Label>
+      <JFXRadioButton fx:id="rbOrtog" focusTraversable="false" layoutX="37.0" layoutY="369.0" text="ORTOGONALIZAÇÃO" toggleGroup="$rbOp">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </JFXRadioButton>
+      <JFXButton fx:id="btnCalcular" focusTraversable="false" layoutX="56.0" layoutY="563.0" prefHeight="45.0" prefWidth="341.0" style="-fx-background-color: #f15756;" text="CALCULAR" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

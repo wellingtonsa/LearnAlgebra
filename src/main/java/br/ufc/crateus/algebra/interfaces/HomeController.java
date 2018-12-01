@@ -85,6 +85,18 @@ public class HomeController extends Application implements Initializable {
 			}
 		});
 		
+		btnEvetoriais.setOnAction(new EventHandler<ActionEvent>() {
+					
+					public void handle(ActionEvent arg0) {
+						try {
+							new EVetoriaisController().start(new Stage());
+							myStage.close();
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						
+					}
+				});
 		
 	}
 }

@@ -42,12 +42,10 @@ public class SplashController extends Application implements Initializable {
 
 	}
 
-
 	public void initialize(URL location, ResourceBundle resources) {
 
 		btnIniciar.setOnAction(new EventHandler<ActionEvent>() {
 
-	
 			public void handle(ActionEvent event) {
 				try {
 					new HomeController().start(new Stage());
@@ -60,7 +58,6 @@ public class SplashController extends Application implements Initializable {
 		});
 
 		lbSair.setOnMousePressed(new EventHandler<Event>() {
-
 
 			public void handle(Event event) {
 				myStage.close();

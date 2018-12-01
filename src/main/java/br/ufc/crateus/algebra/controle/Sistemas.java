@@ -1,5 +1,7 @@
 package br.ufc.crateus.algebra.controle;
 
+import javax.swing.JOptionPane;
+
 import br.ufc.crateus.algebra.util.FatoracaoLU;
 import br.ufc.crateus.algebra.util.Gauss;
 
@@ -13,6 +15,7 @@ public class Sistemas {
 		int n = matr[0].length;
 		double mult = 0, soma = 0;
 		double[] x = new double[n];
+		String escalonamento ="";
 
 
 		for (int k = 0; k < n; k++) {
@@ -20,6 +23,12 @@ public class Sistemas {
 				mult = matr[i][k] / matr[k][k];
 				for (int j = k; j < n; j++) {
 					matr[i][j] = matr[i][j] - mult * matr[k][j];
+					
+					escalonamento+= Matriz.auxExibir(matr);
+					if(isNaN(matr[i][j])) {
+						JOptionPane.showMessageDialog(null, "O sistema não possui solução!", "Sistema Impossivel",JOptionPane.ERROR_MESSAGE);
+						break;
+					}
 				}
 				b[i] = b[i] - mult * b[k];
 			}
@@ -39,12 +48,14 @@ public class Sistemas {
 		g.setMatr(matr);
 		g.setB(b);
 		g.setX(x);
+		JOptionPane.showMessageDialog(null, escalonamento);
 		} catch (Exception e) {
 		}
 
 	}
 
 	public void gaussJordan(double[][] matr, double[] b) {
+		String escalonamento ="";
 
 		for (int i = 0; i <= b.length - 1; i++) {
 			double d, c = 0;
@@ -52,6 +63,11 @@ public class Sistemas {
 
 			for (int s = 0; s <= b.length - 1; s++) {
 				matr[i][s] = ((matr[i][s]) / d);
+				escalonamento+= Matriz.auxExibir(matr);
+				if(isNaN(matr[i][s])) {
+					JOptionPane.showMessageDialog(null, "O sistema não possui solução!", "Sistema Impossivel",JOptionPane.ERROR_MESSAGE);
+					break;
+				}
 			}
 			b[i] = ((b[i]) / d);
 
@@ -69,7 +85,11 @@ public class Sistemas {
 					c = matr[l][i];
 					for (int y = 0; y <= b.length - 1; y++) {
 						matr[l][y] = matr[l][y] - c * matr[i][y];
-
+						escalonamento+= Matriz.auxExibir(matr);
+						if(isNaN(matr[l][y])) {
+							JOptionPane.showMessageDialog(null, "O sistema não possui solução!", "Sistema Impossivel",JOptionPane.ERROR_MESSAGE);
+							break;
+						}
 					}
 					b[l] = b[l] - c * b[i];
 
@@ -151,9 +171,10 @@ public class Sistemas {
 		}
 	}
 
-	public String estudoSistema(double[][] matr, double[] b) {
+	public String[] estudoSistema(double[][] matr, double[] b) {
 		int m = matr.length;
 		int n = matr[0].length;
+		String[] retorno = new String[3];
 		int nulo = 0, lnula1 = 0, lnula2 = 0;
 		double mult = 0;
 
@@ -195,13 +216,15 @@ public class Sistemas {
 		int posto1 = m - lnula1, posto2 = m - lnula2;
 
 		if (posto1 == posto2 && posto1 == n) {
-			return "Sistema Possível e Determinado";
+			retorno[0]=  "Sistema Possível e Determinado";
 		} else if (posto1 == posto2 && posto1 < n) {
-			return "Sistema Possível e Indeterminado";
+			retorno[0]= "Sistema Possível e Indeterminado";
 		} else if (posto1 != posto2) {
-			return "Sistema Impossível";
+			retorno[0]= "Sistema Impossível";
 		}
-		return "Sistema Impossível";
+		retorno[1] = String.valueOf(posto1);
+		retorno[2] = String.valueOf(posto2);
+		return retorno;
 	}
 
 
@@ -215,5 +238,7 @@ public class Sistemas {
 		}
 
 	}
+	
+	public boolean isNaN(double x){return x != x;}
 
 }
