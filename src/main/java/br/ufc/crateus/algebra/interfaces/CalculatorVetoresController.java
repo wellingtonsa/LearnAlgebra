@@ -28,11 +28,11 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class CalculatorVetoresController  extends Application implements Initializable {
+public class CalculatorVetoresController extends Application implements Initializable {
 	public static Stage myStage;
 	GramSchmidt gs = new GramSchmidt();
 	DecimalFormat formato = new DecimalFormat("#.#");
-	
+
 	@FXML
 	private Pane pAB;
 	@FXML
@@ -55,13 +55,13 @@ public class CalculatorVetoresController  extends Application implements Initial
 	private ImageView iBack;
 	@FXML
 	private Label lbV;
-	
+
 	private TextField cell;
-	
+
 	private int linhaA = 0;
 
 	private int colunaA = 0;
-	
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		CalculatorVetoresController.myStage = primaryStage;
@@ -72,19 +72,19 @@ public class CalculatorVetoresController  extends Application implements Initial
 		primaryStage.setResizable(false);
 		primaryStage.initStyle(StageStyle.TRANSPARENT);
 		primaryStage.show();
-		
+
 	}
 
 	public void initialize(URL location, ResourceBundle resources) {
 		Settings();
-		
+
 		iBack.setOnMousePressed(new EventHandler<Event>() {
 
 			public void handle(Event arg0) {
 				myStage.close();
 			}
 		});
-		
+
 		btnMaAA.setOnAction(new EventHandler<ActionEvent>() {
 
 			public void handle(ActionEvent arg0) {
@@ -126,11 +126,12 @@ public class CalculatorVetoresController  extends Application implements Initial
 
 			}
 		});
-		
+
 		rbOrtog.setOnMousePressed(new EventHandler<Event>() {
 
 			public void handle(Event arg0) {
 				pAB.setVisible(true);
+				lbV.setText("VETORES DA BASE B");
 				zerarAllMatriz();
 			}
 		});
@@ -139,29 +140,39 @@ public class CalculatorVetoresController  extends Application implements Initial
 
 			public void handle(Event arg0) {
 				pAB.setVisible(true);
+				lbV.setText("VETORES DA BASE B");
 				zerarAllMatriz();
 			}
 		});
-		
-		
+
 		btnCalcular.setOnAction(new EventHandler<ActionEvent>() {
 
 			public void handle(ActionEvent event) {
 				if (rbOrtog.isSelected()) {
 					double[][] matr = montarBase(linhaA, colunaA, gpA);
+					if (matr.length == matr[0].length) {
+						lbV.setText("VETORES DA BASE C");
 						exibirBase(gs.ortogonalizar(matr), gpA);
-			
-				}else if(rbOrton.isSelected()) {
+					} else {
+						JOptionPane.showMessageDialog(null,
+								"A dimensao dos vetores da base é diferente do numero de vetores. Tente novamente!");
+					}
+
+				} else if (rbOrton.isSelected()) {
 					double[][] matr = montarBase(linhaA, colunaA, gpA);
-					exibirBase(gs.ortonormalizar(matr), gpA);
+					if (matr.length == matr[0].length) {
+						lbV.setText("VETORES DA BASE C");
+						exibirBase(gs.ortonormalizar(matr), gpA);
+					} else {
+						JOptionPane.showMessageDialog(null,
+								"A dimensao dos vetores da base é diferente do numero de vetores. Tente novamente!");
+					}
 				}
 			}
 		});
 
-		
 	}
-	
-	
+
 	public double[][] montarBase(int linha, int coluna, GridPane gp) {
 
 		double[][] sistema = new double[linha][coluna];
@@ -175,7 +186,7 @@ public class CalculatorVetoresController  extends Application implements Initial
 
 		return sistema;
 	}
-	
+
 	public void gerarBase() {
 		gpA.getChildren().clear();
 		for (int i = 0; i < linhaA; i++) {
@@ -189,7 +200,7 @@ public class CalculatorVetoresController  extends Application implements Initial
 		}
 
 	}
-	
+
 	public void exibirBase(double[][] sistema, GridPane gp) {
 		gp.getChildren().clear();
 		for (int i = 0; i < sistema.length; i++) {
@@ -205,8 +216,6 @@ public class CalculatorVetoresController  extends Application implements Initial
 
 	}
 
-
-	
 	public void Settings() {
 		gpA.setHgap(2);
 		gpA.setVgap(2);
@@ -219,6 +228,5 @@ public class CalculatorVetoresController  extends Application implements Initial
 		linhaA = colunaA = 0;
 		gpA.getChildren().clear();
 	}
-	
 
 }
