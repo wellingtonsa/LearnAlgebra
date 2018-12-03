@@ -37,7 +37,7 @@
                   <Font name="Arial" size="12.0" />
                </font>
             </JFXTextField>
-            <ScrollPane fx:id="spD" focusTraversable="false" layoutX="311.0" layoutY="37.0" prefHeight="150.0" prefWidth="45.0">
+            <ScrollPane fx:id="spD" focusTraversable="false" layoutX="311.0" layoutY="37.0" prefHeight="150.0" prefWidth="52.0">
                <content>
                   <GridPane fx:id="gpD" />
                </content>
@@ -61,12 +61,12 @@
                   <GridPane fx:id="gpA" />
                </content>
             </ScrollPane>
-            <Label layoutX="298.0" layoutY="15.0" text="TERMOS" textFill="#f15756">
+            <Label layoutX="307.0" layoutY="14.0" text="TERMOS" textFill="#f15756">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
             </Label>
-            <ScrollPane fx:id="spB" focusTraversable="false" layoutX="312.0" layoutY="36.0" prefHeight="150.0" prefWidth="45.0">
+            <ScrollPane fx:id="spB" focusTraversable="false" layoutX="312.0" layoutY="36.0" prefHeight="150.0" prefWidth="52.0">
                <content>
                   <GridPane fx:id="gpB" />
                </content>
@@ -91,12 +91,12 @@
                   <Font name="Arial" size="14.0" />
                </font>
             </JFXButton>
-            <Label layoutX="233.0" layoutY="201.0" text="EQUAÇÕES" textFill="#f15756">
+            <Label layoutX="233.0" layoutY="201.0" text="INCOGNITAS" textFill="#f15756">
                <font>
                   <Font name="Arial" size="10.0" />
                </font>
             </Label>
-            <Label layoutX="139.0" layoutY="201.0" text="INCOGNITAS" textFill="#f15756">
+            <Label layoutX="139.0" layoutY="201.0" text="EQUAÇÕES" textFill="#f15756">
                <font>
                   <Font name="Arial" size="10.0" />
                </font>

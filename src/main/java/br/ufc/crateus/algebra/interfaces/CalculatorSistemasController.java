@@ -356,7 +356,7 @@ public class CalculatorSistemasController extends Application implements Initial
 		for (int i = 0; i < sistema.length; i++) {
 			for (int j = 0; j < sistema[0].length; j++) {
 				cell = new TextField();
-				cell.setPrefWidth(30);
+				cell.setPrefWidth(50);
 				cell.setPrefHeight(30);
 				cell.setText(String.valueOf(formato.format(sistema[i][j])));
 				gp.add(cell, j, i);
@@ -370,7 +370,7 @@ public class CalculatorSistemasController extends Application implements Initial
 		gp.getChildren().clear();
 		for (int i = 0; i < vetor.length; i++) {
 			cell = new TextField();
-			cell.setPrefWidth(30);
+			cell.setPrefWidth(50);
 			cell.setPrefHeight(30);
 			cell.setText(String.valueOf(formato.format(vetor[i])));
 			gp.add(cell, 0, i);
@@ -400,7 +400,7 @@ public class CalculatorSistemasController extends Application implements Initial
 		for (int i = 0; i < linhaA; i++) {
 			for (int j = 0; j < colunaA; j++) {
 				cell = new TextField();
-				cell.setPrefWidth(30);
+				cell.setPrefWidth(50);
 				cell.setPrefHeight(30);
 				gpA.add(cell, i, j);
 			}
@@ -414,7 +414,7 @@ public class CalculatorSistemasController extends Application implements Initial
 		for (int i = 0; i < linhaB; i++) {
 			for (int j = 0; j < colunaB; j++) {
 				cell = new TextField();
-				cell.setPrefWidth(30);
+				cell.setPrefWidth(50);
 				cell.setPrefHeight(30);
 				gpB.add(cell, i, j);
 			}

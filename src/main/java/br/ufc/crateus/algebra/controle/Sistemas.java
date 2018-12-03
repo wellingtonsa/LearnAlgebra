@@ -10,14 +10,14 @@ public class Sistemas {
 	FatoracaoLU falu = new FatoracaoLU();
 
 	public void gauss(double[][] matr, double[] b) {
-		try {
+
 		int m = matr.length;
 		int n = matr[0].length;
 		double mult = 0, soma = 0;
 		double[] x = new double[n];
 		String escalonamento ="";
 
-
+		try {
 		for (int k = 0; k < n; k++) {
 			for (int i = k + 1; i < m; i++) {
 				mult = matr[i][k] / matr[k][k];
@@ -50,13 +50,18 @@ public class Sistemas {
 		g.setX(x);
 		JOptionPane.showMessageDialog(null, escalonamento);
 		} catch (Exception e) {
+			g.setMatr(matr);
+			g.setB(b);
+			g.setX(x);
+			return;
 		}
 
 	}
 
 	public void gaussJordan(double[][] matr, double[] b) {
 		String escalonamento ="";
-
+		
+		try {
 		for (int i = 0; i <= b.length - 1; i++) {
 			double d, c = 0;
 			d = matr[i][i];
@@ -107,9 +112,15 @@ public class Sistemas {
 
 		}
 
-		
+		JOptionPane.showMessageDialog(null, escalonamento);
 		g.setMatr(matr);
 		g.setB(b);
+		
+		}catch(Exception e) {
+			g.setMatr(matr);
+			g.setB(b);
+			return;
+		}
 
 	}
 

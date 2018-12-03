@@ -22,7 +22,7 @@
       </ImageView>
       <Pane fx:id="pAB" layoutX="-2.0" layoutY="57.0" prefHeight="256.0" prefWidth="450.0">
          <children>
-            <Label fx:id="lbV" layoutX="148.0" layoutY="14.0" text="VETORES DA BASE B" textFill="#f15756">
+            <Label layoutX="148.0" layoutY="14.0" text="VETORES DA BASE B" textFill="#f15756">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
@@ -64,28 +64,34 @@
             </Label>
          </children>
       </Pane>
-      <JFXRadioButton fx:id="rbOrton" focusTraversable="false" layoutX="225.0" layoutY="369.0" text="ORTONOMALIZAÇÃO">
-         <toggleGroup>
-            <ToggleGroup fx:id="rbOp" />
-         </toggleGroup>
-         <font>
-            <Font name="Arial" size="14.0" />
-         </font>
-      </JFXRadioButton>
-      <Label layoutX="179.0" layoutY="350.0" text="OPERAÇÕES" textFill="#f15756">
-         <font>
-            <Font name="Arial" size="11.0" />
-         </font>
-      </Label>
-      <JFXRadioButton fx:id="rbOrtog" focusTraversable="false" layoutX="37.0" layoutY="369.0" text="ORTOGONALIZAÇÃO" toggleGroup="$rbOp">
-         <font>
-            <Font name="Arial" size="14.0" />
-         </font>
-      </JFXRadioButton>
       <JFXButton fx:id="btnCalcular" focusTraversable="false" layoutX="56.0" layoutY="563.0" prefHeight="45.0" prefWidth="341.0" style="-fx-background-color: #f15756;" text="CALCULAR" textFill="WHITE">
          <font>
             <Font name="Arial" size="13.0" />
          </font>
       </JFXButton>
+      <Pane fx:id="pE" layoutX="10.0" layoutY="67.0" prefHeight="256.0" prefWidth="450.0" visible="false">
+         <children>
+            <Label layoutX="37.0" layoutY="44.0" text="ORTOGO. DA BASE C" textFill="#f15756">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="260.0" layoutY="44.0" text="ORTONO. DA BASE C" textFill="#f15756">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Label>
+            <ScrollPane fx:id="spA2" centerShape="false" focusTraversable="false" layoutX="3.0" layoutY="63.0" prefHeight="150.0" prefWidth="210.0" scaleShape="false">
+               <content>
+                  <GridPane fx:id="gpOG" />
+               </content>
+            </ScrollPane>
+            <ScrollPane fx:id="spA1" centerShape="false" focusTraversable="false" layoutX="228.0" layoutY="63.0" prefHeight="150.0" prefWidth="210.0" scaleShape="false">
+               <content>
+                  <GridPane fx:id="gpON" />
+               </content>
+            </ScrollPane>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

@@ -36,13 +36,15 @@ public class CalculatorVetoresController extends Application implements Initiali
 	@FXML
 	private Pane pAB;
 	@FXML
+	private Pane pE;
+	@FXML
 	private GridPane gpA;
 	@FXML
+	private GridPane gpON;
+	@FXML
+	private GridPane gpOG;
+	@FXML
 	private JFXButton btnCalcular;
-	@FXML
-	private JFXRadioButton rbOrton;
-	@FXML
-	private JFXRadioButton rbOrtog;
 	@FXML
 	private JFXButton btnMaAA;
 	@FXML
@@ -53,8 +55,6 @@ public class CalculatorVetoresController extends Application implements Initiali
 	private JFXButton btnMeLA;
 	@FXML
 	private ImageView iBack;
-	@FXML
-	private Label lbV;
 
 	private TextField cell;
 
@@ -127,47 +127,23 @@ public class CalculatorVetoresController extends Application implements Initiali
 			}
 		});
 
-		rbOrtog.setOnMousePressed(new EventHandler<Event>() {
-
-			public void handle(Event arg0) {
-				pAB.setVisible(true);
-				lbV.setText("VETORES DA BASE B");
-				zerarAllMatriz();
-			}
-		});
-
-		rbOrton.setOnMousePressed(new EventHandler<Event>() {
-
-			public void handle(Event arg0) {
-				pAB.setVisible(true);
-				lbV.setText("VETORES DA BASE B");
-				zerarAllMatriz();
-			}
-		});
 
 		btnCalcular.setOnAction(new EventHandler<ActionEvent>() {
 
 			public void handle(ActionEvent event) {
-				if (rbOrtog.isSelected()) {
+				
 					double[][] matr = montarBase(linhaA, colunaA, gpA);
 					if (matr.length == matr[0].length) {
-						lbV.setText("VETORES DA BASE C");
-						exibirBase(gs.ortogonalizar(matr), gpA);
+						pAB.setVisible(false);
+						pE.setVisible(true);
+						double[][] matr_2 = gs.ortogonalizar(matr);
+						exibirBase(matr_2, gpOG);
+						exibirBase(gs.ortonormalizar(matr_2), gpON);
 					} else {
 						JOptionPane.showMessageDialog(null,
 								"A dimensao dos vetores da base é diferente do numero de vetores. Tente novamente!");
 					}
 
-				} else if (rbOrton.isSelected()) {
-					double[][] matr = montarBase(linhaA, colunaA, gpA);
-					if (matr.length == matr[0].length) {
-						lbV.setText("VETORES DA BASE C");
-						exibirBase(gs.ortonormalizar(matr), gpA);
-					} else {
-						JOptionPane.showMessageDialog(null,
-								"A dimensao dos vetores da base é diferente do numero de vetores. Tente novamente!");
-					}
-				}
 			}
 		});
 
@@ -192,7 +168,7 @@ public class CalculatorVetoresController extends Application implements Initiali
 		for (int i = 0; i < linhaA; i++) {
 			for (int j = 0; j < colunaA; j++) {
 				cell = new TextField();
-				cell.setPrefWidth(30);
+				cell.setPrefWidth(50);
 				cell.setPrefHeight(30);
 				gpA.add(cell, i, j);
 			}
@@ -206,7 +182,7 @@ public class CalculatorVetoresController extends Application implements Initiali
 		for (int i = 0; i < sistema.length; i++) {
 			for (int j = 0; j < sistema[0].length; j++) {
 				cell = new TextField();
-				cell.setPrefWidth(30);
+				cell.setPrefWidth(50);
 				cell.setPrefHeight(30);
 				cell.setText(String.valueOf(formato.format(sistema[i][j])));
 				gp.add(cell, j, i);
@@ -219,13 +195,17 @@ public class CalculatorVetoresController extends Application implements Initiali
 	public void Settings() {
 		gpA.setHgap(2);
 		gpA.setVgap(2);
-		rbOrtog.setSelectedColor(Color.rgb(241, 87, 86));
-		rbOrton.setSelectedColor(Color.rgb(241, 87, 86));
+		gpON.setHgap(2);
+		gpON.setVgap(2);
+		gpOG.setHgap(2);
+		gpOG.setVgap(2);
 
 	}
 
 	public void zerarAllMatriz() {
 		linhaA = colunaA = 0;
+		gpOG.getChildren().clear();
+		gpON.getChildren().clear();
 		gpA.getChildren().clear();
 	}
 

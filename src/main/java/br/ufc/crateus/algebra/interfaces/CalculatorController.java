@@ -524,7 +524,7 @@ public class CalculatorController extends Application implements Initializable {
 		for (int i = 0; i < linhaA; i++) {
 			for (int j = 0; j < colunaA; j++) {
 				cell = new TextField();
-				cell.setPrefWidth(30);
+				cell.setPrefWidth(50);
 				cell.setPrefHeight(30);
 				gpA.add(cell, j, i);
 			}
@@ -538,7 +538,7 @@ public class CalculatorController extends Application implements Initializable {
 		for (int i = 0; i < linhaB; i++) {
 			for (int j = 0; j < colunaB; j++) {
 				cell = new TextField();
-				cell.setPrefWidth(30);
+				cell.setPrefWidth(50);
 				cell.setPrefHeight(30);
 				gpB.add(cell, j, i);
 			}
@@ -585,7 +585,7 @@ public class CalculatorController extends Application implements Initializable {
 		for (int i = 0; i < matriz.length; i++) {
 			for (int j = 0; j < matriz[0].length; j++) {
 				cell = new TextField();
-				cell.setPrefWidth(30);
+				cell.setPrefWidth(50);
 				cell.setPrefHeight(30);
 				cell.setText(String.valueOf(formato.format(matriz[i][j])));
 				gp.add(cell, j, i);
