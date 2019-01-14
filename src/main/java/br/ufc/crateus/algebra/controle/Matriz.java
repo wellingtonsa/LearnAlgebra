@@ -183,7 +183,7 @@ public class Matriz {
 
 			for (int i = 0; i < transp.length; i++) {
 				for (int j = 0; j < transp[0].length; j++) {
-					tempInv[i][j] = transp[i][j] / deter;
+					tempInv[i][j] = transp[i][j] * (1/deter);
 
 				}
 

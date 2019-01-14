@@ -156,7 +156,7 @@ public class CalculatorVetoresController extends Application implements Initiali
 		for (int j = 0; j < coluna; j++) {
 			for (int i = 0; i < linha; i++) {
 				if (!((TextField) gp.getChildren().get(j * linha + i)).getText().isEmpty())
-					sistema[i][j] = Double.parseDouble(((TextField) gp.getChildren().get(i * coluna + j)).getText());
+					sistema[i][j] = Double.parseDouble(((TextField) gp.getChildren().get(j * linha + i)).getText());
 			}
 		}
 
